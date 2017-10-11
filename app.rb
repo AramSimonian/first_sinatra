@@ -18,16 +18,24 @@ get '/random-cat' do
   erb(:index) + erb(:aram)
 end
 
-get '/named-cat' do
+post '/named-cat' do
 
   p params
-  
+
   @name = params[:name] || ""
   @likes = params[:likes] || ""
-  
+  @show_form_only = false
   erb(:index)
 end
 
 get '/aram' do
   erb(:aram)
+end
+
+get '/cat-form' do
+  @name = params[:name] || ""
+  @likes = params[:likes] || ""
+
+  @show_form_only = true
+  erb(:index)
 end
